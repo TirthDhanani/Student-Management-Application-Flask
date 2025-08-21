@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-4">Registered Students</h2>
+<a href="/upsert" class="btn btn-primary mb-3">+ Add Student</a>
+<div class="table-responsive">
+  <table id="studentTable" class="table table-bordered table-striped align-middle">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First</th>
+        <th>Last</th>
+        <th>Gender</th>
+        <th>Degree</th>
+        <th>Address</th>
+        <th>Zip</th>
+        <th>City</th>
+        <th>File</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 id="formTitle" class="mb-4">Add Student</h2>
+<form id="studentForm" enctype="multipart/form-data" class="row g-3">
+  <input type="hidden" id="studentId" name="studentId">
+  <div class="col-md-6 mb-3">
+    <label for="fname" class="form-label">First Name*</label>
+    <input type="text" class="form-control" id="fname" name="fname" required>
+  </div>
+  <div class="col-md-6 mb-3">
+    <label for="lname" class="form-label">Last Name*</label>
+    <input type="text" class="form-control" id="lname" name="lname" required>
+  </div>
+  <div class="col-md-12 mb-3">
+    <label class="form-label">Gender*</label><br>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="gender" value="Male" id="gender-male">
+      <label class="form-check-label" for="gender-male">Male</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="gender" value="Female" id="gender-female">
+      <label class="form-check-label" for="gender-female">Female</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="gender" value="Other" id="gender-other">
+      <label class="form-check-label" for="gender-other">Other</label>
+    </div>
+  </div>
+  <div class="col-md-6 mb-3">
+    <label class="form-label">Degree</label>
+    <select name="degree_id" class="form-select" id="degreeSelect">
+      <option value="">Select Degree</option>
+    </select>
+  </div>
+  <div class="col-md-6 mb-3">
+    <label for="attachment" class="form-label">File Attachment</label>
+    <input type="file" class="form-control" id="attachment" name="attachment" accept="*/*">
+  </div>
+  <div id="attachmentInfo" class="mt-2"></div>
+
+  <div class="col-md-12 mb-3">
+    <label for="address" class="form-label">Address</label>
+    <input type="text" class="form-control" id="address" name="address">
+  </div>
+  <div class="col-md-6 mb-3">
+    <label for="zipcode" class="form-label">Zip Code</label>
+    <input type="text" class="form-control" id="zipcode" name="zipcode">
+  </div>
+  <div class="col-md-6 mb-3">
+    <label for="city" class="form-label">City</label>
+    <input type="text" class="form-control" id="city" name="city">
+  </div>
+  <div class="col-md-12 mb-3">
+    <button type="button" id="toggleFamily" class="btn btn-outline-primary mt-2 mb-2">+ Add More Details</button>
+    <div id="familySection" class="card card-body border border-primary mt-2 mb-3" style="display:none;">
+      <h5 class="mb-3">Family Details</h5>
+      <div class="mb-2"><label>Mother's Name</label>
+        <input class="form-control" name="mother_name">
+      </div>
+      <div class="mb-2"><label>Mother's Contact</label>
+        <input class="form-control" name="mother_contact">
+      </div>
+      <div class="mb-2"><label>Father's Name</label>
+        <input class="form-control" name="father_name">
+      </div>
+      <div class="mb-2"><label>Father's Contact</label>
+        <input class="form-control" name="father_contact">
+      </div>
+      <div class="mb-2"><label>Sibling (if any)</label>
+        <input class="form-control" name="sibling_name">
+      </div>
+      <div class="mb-2"><label>Sibling Contact</label>
+        <input class="form-control" name="sibling_contact">
+      </div>
+    </div>
+  </div>
+  <div class="col-12 mt-3">
+    <button type="submit" class="btn btn-success px-4">Submit</button>
+  </div>
+</form>
+<script src="{{ url_for('static', filename='js/upsert.js') }}"></script>
+{% endblock %}

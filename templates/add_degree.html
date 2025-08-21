@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-4">Add Degree</h2>
+<form id="degreeForm" class="mb-4">
+  <div class="mb-3">
+    <label for="degreeName" class="form-label">Degree Name</label>
+    <input type="text" class="form-control" id="degreeName" name="name" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Add Degree</button>
+</form>
+<ul id="degreeList"></ul>
+<script>
+document.getElementById('degreeForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  fetch('/api/degrees', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({name: document.getElementById('degreeName').value})
+  }).then(res => res.json())
+    .then(data => {
+      if(data.error) alert(data.error);
+      else location.reload();
+    });
+});
+fetch('/api/degrees').then(res => res.json()).then(degrees => {
+  const list = document.getElementById('degreeList');
+  degrees.forEach(d => {
+    const li = document.createElement('li');
+    li.textContent = d.name;
+    list.appendChild(li);
+  });
+});
+</script>
+{% endblock %}
